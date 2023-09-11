@@ -90,7 +90,7 @@ def depthFirstTreeSearch(values):
         return False ## Failed earlier
     if all(len(values[s]) == 1 for s in boxes): 
         return values ## Solved!
-    
+
     # Choose one of the unfilled squares with the fewest possibilities
     n,s = min((len(values[s]), s) for s in boxes if len(values[s]) > 1)
 
@@ -98,8 +98,7 @@ def depthFirstTreeSearch(values):
     for value in values[s]:
         newSudoko = values.copy()
         newSudoko[s] = value
-        attempt = depthFirstTreeSearch(newSudoko)
-        if attempt:
+        if attempt := depthFirstTreeSearch(newSudoko):
             return attempt
     
 
